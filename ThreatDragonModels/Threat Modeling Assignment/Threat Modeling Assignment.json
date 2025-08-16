@@ -3,7 +3,7 @@
   "summary": {
     "title": "Threat Modeling Assignment",
     "owner": "Jaber Kaal",
-    "description": "Initial threat model for a sample web application with login, open source authentication, message-of-the-day, and comments.",
+    "description": "This system is a simple web application that provides a login page for users. It uses an open source authentication component to validate credentials against a database. If valid, the user is shown a message-of-the-day retrieved from the database, and they may submit comments that are also stored in the database. The model highlights the data flows between the client browser, the application, the authentication component, and the database, along with potential threats using the STRIDE framework.",
     "id": 0
   },
   "detail": {
@@ -13,141 +13,15 @@
         "id": 0,
         "title": "Initial Threat Model Diagram",
         "diagramType": "STRIDE",
-        "placeholder": "Web application threat model diagram",
+        "placeholder": "New STRIDE diagram description",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "version": "2.5.0-RC1",
-        "cells": [
-          {
-            "id": "actor_user",
-            "type": "tm.Actor",
-            "text": "User",
-            "position": { "x": 50, "y": 200 },
-            "size": { "width": 80, "height": 40 }
-          },
-          {
-            "id": "process_login",
-            "type": "tm.Process",
-            "text": "Login Page",
-            "position": { "x": 250, "y": 150 },
-            "size": { "width": 100, "height": 50 }
-          },
-          {
-            "id": "process_auth",
-            "type": "tm.Process",
-            "text": "Open Source Auth Component",
-            "position": { "x": 450, "y": 100 },
-            "size": { "width": 160, "height": 60 }
-          },
-          {
-            "id": "process_app",
-            "type": "tm.Process",
-            "text": "Web Application",
-            "position": { "x": 450, "y": 220 },
-            "size": { "width": 140, "height": 60 }
-          },
-          {
-            "id": "store_db",
-            "type": "tm.Store",
-            "text": "Database",
-            "position": { "x": 700, "y": 170 },
-            "size": { "width": 120, "height": 70 }
-          },
-          {
-            "id": "boundary_app",
-            "type": "tm.Boundary",
-            "text": "Application Trust Boundary",
-            "position": { "x": 220, "y": 70 },
-            "size": { "width": 630, "height": 250 }
-          },
-          {
-            "id": "flow1",
-            "type": "tm.Flow",
-            "source": "actor_user",
-            "target": "process_login",
-            "text": "Enter username/password"
-          },
-          {
-            "id": "flow2",
-            "type": "tm.Flow",
-            "source": "process_login",
-            "target": "process_auth",
-            "text": "Send credentials"
-          },
-          {
-            "id": "flow3",
-            "type": "tm.Flow",
-            "source": "process_auth",
-            "target": "store_db",
-            "text": "Check credentials in DB"
-          },
-          {
-            "id": "flow4",
-            "type": "tm.Flow",
-            "source": "store_db",
-            "target": "process_auth",
-            "text": "Return auth result"
-          },
-          {
-            "id": "flow5",
-            "type": "tm.Flow",
-            "source": "process_auth",
-            "target": "process_app",
-            "text": "Authenticated user session"
-          },
-          {
-            "id": "flow6",
-            "type": "tm.Flow",
-            "source": "process_app",
-            "target": "store_db",
-            "text": "Fetch message of the day"
-          },
-          {
-            "id": "flow7",
-            "type": "tm.Flow",
-            "source": "store_db",
-            "target": "process_app",
-            "text": "Return message of the day"
-          },
-          {
-            "id": "flow8",
-            "type": "tm.Flow",
-            "source": "process_app",
-            "target": "actor_user",
-            "text": "Display message of the day"
-          },
-          {
-            "id": "flow9",
-            "type": "tm.Flow",
-            "source": "actor_user",
-            "target": "process_app",
-            "text": "Submit comment"
-          },
-          {
-            "id": "flow10",
-            "type": "tm.Flow",
-            "source": "process_app",
-            "target": "store_db",
-            "text": "Store comment"
-          }
-        ]
+        "cells": [],
+        "description": "This diagram shows the data flow for the sample web application including login, open source authentication, message-of-the-day retrieval, and comments."
       }
     ],
     "diagramTop": 2,
     "reviewer": "Todd Wolfe",
-    "threatTop": 1,
-    "threats": [
-      {
-        "id": 1,
-        "title": "Credential Theft via Open Source Auth Component",
-        "status": "Open",
-        "severity": "High",
-        "type": "Spoofing",
-        "owner": "test",
-        "description": "If the open source authentication component has vulnerabilities, attackers may spoof identities and gain unauthorized access.",
-        "mitigation": "",
-        "modelType": "STRIDE",
-        "elementId": "process_auth"
-      }
-    ]
+    "threatTop": 0
   }
 }
