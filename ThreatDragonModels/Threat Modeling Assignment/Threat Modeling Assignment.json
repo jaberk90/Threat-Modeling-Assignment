@@ -25,13 +25,7 @@
             "size": { "width": 180, "height": 130 },
             "zIndex": -1,
             "visible": true,
-            "data": {
-              "type": "tm.BoundaryBox",
-              "name": "Internet Boundary",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
+            "data": { "type": "tm.BoundaryBox", "name": "Internet Boundary", "description": "", "isTrustBoundary": true, "hasOpenThreats": false },
             "tools": { "items": ["boundary", "button-remove"], "name": null }
           },
           {
@@ -41,13 +35,7 @@
             "size": { "width": 520, "height": 220 },
             "zIndex": -1,
             "visible": true,
-            "data": {
-              "type": "tm.BoundaryBox",
-              "name": "Application / Backend",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
+            "data": { "type": "tm.BoundaryBox", "name": "Application / Backend", "description": "", "isTrustBoundary": true, "hasOpenThreats": false },
             "tools": { "items": ["boundary", "button-remove"], "name": null }
           },
           {
@@ -57,13 +45,7 @@
             "size": { "width": 200, "height": 150 },
             "zIndex": -1,
             "visible": true,
-            "data": {
-              "type": "tm.BoundaryBox",
-              "name": "Database Boundary",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
+            "data": { "type": "tm.BoundaryBox", "name": "Database Boundary", "description": "", "isTrustBoundary": true, "hasOpenThreats": false },
             "tools": { "items": ["boundary", "button-remove"], "name": null }
           },
 
@@ -74,12 +56,7 @@
             "size": { "width": 120, "height": 60 },
             "zIndex": 1,
             "visible": true,
-            "data": {
-              "type": "tm.Actor",
-              "name": "User Browser",
-              "description": "",
-              "hasOpenThreats": false
-            },
+            "data": { "type": "tm.Actor", "name": "User Browser", "description": "", "hasOpenThreats": false },
             "tools": { "items": ["actor", "button-remove"], "name": null }
           },
 
@@ -90,12 +67,7 @@
             "size": { "width": 140, "height": 70 },
             "zIndex": 2,
             "visible": true,
-            "data": {
-              "type": "tm.Process",
-              "name": "Login Page",
-              "description": "Collects username/password and forwards to auth",
-              "hasOpenThreats": false
-            },
+            "data": { "type": "tm.Process", "name": "Login Page", "description": "Collects username/password and forwards to auth", "hasOpenThreats": false },
             "tools": { "items": ["process", "button-remove"], "name": null }
           },
           {
@@ -105,12 +77,7 @@
             "size": { "width": 160, "height": 80 },
             "zIndex": 2,
             "visible": true,
-            "data": {
-              "type": "tm.Process",
-              "name": "Web Application",
-              "description": "Handles MotD display and comment submission",
-              "hasOpenThreats": false
-            },
+            "data": { "type": "tm.Process", "name": "Web Application", "description": "Handles MotD display and comment submission", "hasOpenThreats": false },
             "tools": { "items": ["process", "button-remove"], "name": null }
           },
           {
@@ -120,12 +87,7 @@
             "size": { "width": 200, "height": 80 },
             "zIndex": 2,
             "visible": true,
-            "data": {
-              "type": "tm.Process",
-              "name": "Open Source Auth Component",
-              "description": "Validates credentials against DB records",
-              "hasOpenThreats": true
-            },
+            "data": { "type": "tm.Process", "name": "Open Source Auth Component", "description": "Validates credentials against DB records", "hasOpenThreats": true },
             "tools": { "items": ["process", "button-remove"], "name": null }
           },
 
@@ -136,116 +98,22 @@
             "size": { "width": 140, "height": 80 },
             "zIndex": 2,
             "visible": true,
-            "data": {
-              "type": "tm.Store",
-              "name": "Database",
-              "description": "Users, password hashes, MotD, Comments",
-              "hasOpenThreats": false
-            },
+            "data": { "type": "tm.Store", "name": "Database", "description": "Users, password hashes, MotD, Comments", "hasOpenThreats": false },
             "tools": { "items": ["datastore", "button-remove"], "name": null }
           },
 
-          /* ------- Flows: Login & Auth ------- */
-          {
-            "id": "flow-1",
-            "shape": "flow",
-            "zIndex": 3,
-            "data": { "type": "tm.Flow", "name": "1) Login POST (username, password)" },
-            "source": { "cell": "actor-user" },
-            "target": { "cell": "process-login" }
-          },
-          {
-            "id": "flow-2",
-            "shape": "flow",
-            "zIndex": 3,
-            "data": { "type": "tm.Flow", "name": "2) Send credentials to Auth" },
-            "source": { "cell": "process-login" },
-            "target": { "cell": "process-auth" }
-          },
-          {
-            "id": "flow-3",
-            "shape": "flow",
-            "zIndex": 3,
-            "data": { "type": "tm.Flow", "name": "3) Query user (hash/salt)" },
-            "source": { "cell": "process-auth" },
-            "target": { "cell": "store-db" }
-          },
-          {
-            "id": "flow-4",
-            "shape": "flow",
-            "zIndex": 3,
-            "data": { "type": "tm.Flow", "name": "4) Result (match / no match)" },
-            "source": { "cell": "store-db" },
-            "target": { "cell": "process-auth" }
-          },
-          {
-            "id": "flow-5",
-            "shape": "flow",
-            "zIndex": 3,
-            "data": { "type": "tm.Flow", "name": "5) Auth decision" },
-            "source": { "cell": "process-auth" },
-            "target": { "cell": "process-app" }
-          },
-
-          /* ------- Flows: MotD retrieval/display ------- */
-          {
-            "id": "flow-6",
-            "shape": "flow",
-            "zIndex": 3,
-            "data": { "type": "tm.Flow", "name": "6) Read MotD" },
-            "source": { "cell": "process-app" },
-            "target": { "cell": "store-db" }
-          },
-          {
-            "id": "flow-7",
-            "shape": "flow",
-            "zIndex": 3,
-            "data": { "type": "tm.Flow", "name": "7) MotD data" },
-            "source": { "cell": "store-db" },
-            "target": { "cell": "process-app" }
-          },
-          {
-            "id": "flow-8",
-            "shape": "flow",
-            "zIndex": 3,
-            "data": { "type": "tm.Flow", "name": "8) MotD response to Browser" },
-            "source": { "cell": "process-app" },
-            "target": { "cell": "actor-user" }
-          },
-
-          /* ------- Flows: Comment submission ------- */
-          {
-            "id": "flow-9",
-            "shape": "flow",
-            "zIndex": 3,
-            "data": { "type": "tm.Flow", "name": "9) Comment POST" },
-            "source": { "cell": "actor-user" },
-            "target": { "cell": "process-app" }
-          },
-          {
-            "id": "flow-10",
-            "shape": "flow",
-            "zIndex": 3,
-            "data": { "type": "tm.Flow", "name": "10) Insert comment" },
-            "source": { "cell": "process-app" },
-            "target": { "cell": "store-db" }
-          },
-          {
-            "id": "flow-11",
-            "shape": "flow",
-            "zIndex": 3,
-            "data": { "type": "tm.Flow", "name": "11) Ack / Comment ID" },
-            "source": { "cell": "store-db" },
-            "target": { "cell": "process-app" }
-          },
-          {
-            "id": "flow-12",
-            "shape": "flow",
-            "zIndex": 3,
-            "data": { "type": "tm.Flow", "name": "12) Comment ack to Browser" },
-            "source": { "cell": "process-app" },
-            "target": { "cell": "actor-user" }
-          }
+          { "id": "flow-1",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "1) Login POST (username, password)" }, "source": { "cell": "actor-user" },   "target": { "cell": "process-login" } },
+          { "id": "flow-2",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "2) Send credentials to Auth" },          "source": { "cell": "process-login" }, "target": { "cell": "process-auth" } },
+          { "id": "flow-3",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "3) Query user (hash/salt)" },            "source": { "cell": "process-auth" },  "target": { "cell": "store-db" } },
+          { "id": "flow-4",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "4) Result (match / no match)" },         "source": { "cell": "store-db" },      "target": { "cell": "process-auth" } },
+          { "id": "flow-5",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "5) Auth decision" },                     "source": { "cell": "process-auth" },  "target": { "cell": "process-app" } },
+          { "id": "flow-6",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "6) Read MotD" },                         "source": { "cell": "process-app" },   "target": { "cell": "store-db" } },
+          { "id": "flow-7",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "7) MotD data" },                         "source": { "cell": "store-db" },      "target": { "cell": "process-app" } },
+          { "id": "flow-8",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "8) MotD response to Browser" },          "source": { "cell": "process-app" },   "target": { "cell": "actor-user" } },
+          { "id": "flow-9",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "9) Comment POST" },                      "source": { "cell": "actor-user" },    "target": { "cell": "process-app" } },
+          { "id": "flow-10", "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "10) Insert comment" },                   "source": { "cell": "process-app" },   "target": { "cell": "store-db" } },
+          { "id": "flow-11", "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "11) Ack / Comment ID" },                 "source": { "cell": "store-db" },      "target": { "cell": "process-app" } },
+          { "id": "flow-12", "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "12) Comment ack to Browser" },           "source": { "cell": "process-app" },   "target": { "cell": "actor-user" } }
         ]
       }
     ],
