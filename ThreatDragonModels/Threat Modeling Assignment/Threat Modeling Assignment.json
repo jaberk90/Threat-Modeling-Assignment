@@ -16,7 +16,36 @@
         "placeholder": "New STRIDE diagram description",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "version": "2.5.0-RC1",
-        "cells": [],
+        "cells": [
+          {
+            "position": {
+              "x": 120,
+              "y": 20
+            },
+            "size": {
+              "width": 128,
+              "height": 60
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "a1f09d39-53f2-4f65-94e4-342e59a0a936",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Trust Boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
+            }
+          }
+        ],
         "description": "This diagram shows the data flow for the sample web application including login, open source authentication, message-of-the-day retrieval, and comments."
       }
     ],
