@@ -8,11 +8,14 @@
   },
   "detail": {
     "contributors": [],
+    "reviewer": "Todd Wolfe",
+    "diagramTop": 1,
+    "threatTop": 0,
     "diagrams": [
       {
         "id": 0,
         "title": "Initial Threat Model Diagram",
-        "diagramType": "STRIDE",
+        "diagramType": "DFD",
         "placeholder": "This diagram shows the data flow for the sample web application including login, open source authentication, message-of-the-day retrieval, and comments.",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "version": "2.5.0-RC1",
@@ -20,105 +23,80 @@
         "cells": [
           {
             "id": "boundary-internet",
-            "shape": "trust-boundary-box",
+            "type": "tm.Boundary",
             "position": { "x": 40, "y": 10 },
-            "size": { "width": 180, "height": 130 },
-            "zIndex": -1,
-            "visible": true,
-            "data": { "type": "tm.BoundaryBox", "name": "Internet Boundary", "description": "", "isTrustBoundary": true, "hasOpenThreats": false },
-            "tools": { "items": ["boundary", "button-remove"], "name": null }
+            "size": { "width": 200, "height": 130 },
+            "attrs": { "text": { "text": "Internet Boundary" } }
           },
           {
             "id": "boundary-app",
-            "shape": "trust-boundary-box",
-            "position": { "x": 240, "y": 60 },
-            "size": { "width": 520, "height": 220 },
-            "zIndex": -1,
-            "visible": true,
-            "data": { "type": "tm.BoundaryBox", "name": "Application / Backend", "description": "", "isTrustBoundary": true, "hasOpenThreats": false },
-            "tools": { "items": ["boundary", "button-remove"], "name": null }
+            "type": "tm.Boundary",
+            "position": { "x": 260, "y": 40 },
+            "size": { "width": 460, "height": 200 },
+            "attrs": { "text": { "text": "Application / Backend" } }
           },
           {
             "id": "boundary-db",
-            "shape": "trust-boundary-box",
-            "position": { "x": 780, "y": 110 },
+            "type": "tm.Boundary",
+            "position": { "x": 760, "y": 120 },
             "size": { "width": 200, "height": 150 },
-            "zIndex": -1,
-            "visible": true,
-            "data": { "type": "tm.BoundaryBox", "name": "Database Boundary", "description": "", "isTrustBoundary": true, "hasOpenThreats": false },
-            "tools": { "items": ["boundary", "button-remove"], "name": null }
+            "attrs": { "text": { "text": "Database Boundary" } }
           },
 
           {
             "id": "actor-user",
-            "shape": "actor",
+            "type": "tm.Actor",
             "position": { "x": 80, "y": 40 },
-            "size": { "width": 120, "height": 60 },
-            "zIndex": 1,
-            "visible": true,
-            "data": { "type": "tm.Actor", "name": "User Browser", "description": "", "hasOpenThreats": false },
-            "tools": { "items": ["actor", "button-remove"], "name": null }
+            "size": { "width": 140, "height": 60 },
+            "attrs": { "text": { "text": "User Browser" } }
           },
 
           {
             "id": "process-login",
-            "shape": "process",
-            "position": { "x": 300, "y": 90 },
-            "size": { "width": 140, "height": 70 },
-            "zIndex": 2,
-            "visible": true,
-            "data": { "type": "tm.Process", "name": "Login Page", "description": "Collects username/password and forwards to auth", "hasOpenThreats": false },
-            "tools": { "items": ["process", "button-remove"], "name": null }
+            "type": "tm.Process",
+            "position": { "x": 300, "y": 70 },
+            "size": { "width": 160, "height": 70 },
+            "attrs": { "text": { "text": "Login Page" } }
           },
           {
             "id": "process-app",
-            "shape": "process",
-            "position": { "x": 300, "y": 180 },
-            "size": { "width": 160, "height": 80 },
-            "zIndex": 2,
-            "visible": true,
-            "data": { "type": "tm.Process", "name": "Web Application", "description": "Handles MotD display and comment submission", "hasOpenThreats": false },
-            "tools": { "items": ["process", "button-remove"], "name": null }
+            "type": "tm.Process",
+            "position": { "x": 300, "y": 160 },
+            "size": { "width": 180, "height": 80 },
+            "attrs": { "text": { "text": "Web Application" } }
           },
           {
             "id": "process-auth",
-            "shape": "process",
-            "position": { "x": 520, "y": 140 },
-            "size": { "width": 200, "height": 80 },
-            "zIndex": 2,
-            "visible": true,
-            "data": { "type": "tm.Process", "name": "Open Source Auth Component", "description": "Validates credentials against DB records", "hasOpenThreats": true },
-            "tools": { "items": ["process", "button-remove"], "name": null }
+            "type": "tm.Process",
+            "position": { "x": 520, "y": 120 },
+            "size": { "width": 220, "height": 80 },
+            "attrs": { "text": { "text": "Open Source Auth Component" } }
           },
 
           {
             "id": "store-db",
-            "shape": "datastore",
-            "position": { "x": 820, "y": 150 },
-            "size": { "width": 140, "height": 80 },
-            "zIndex": 2,
-            "visible": true,
-            "data": { "type": "tm.Store", "name": "Database", "description": "Users, password hashes, MotD, Comments", "hasOpenThreats": false },
-            "tools": { "items": ["datastore", "button-remove"], "name": null }
+            "type": "tm.Store",
+            "position": { "x": 800, "y": 150 },
+            "size": { "width": 160, "height": 90 },
+            "attrs": { "text": { "text": "Database (Users, MotD, Comments)" } }
           },
 
-          { "id": "flow-1",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "1) Login POST (username, password)" }, "source": { "cell": "actor-user" },   "target": { "cell": "process-login" } },
-          { "id": "flow-2",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "2) Send credentials to Auth" },          "source": { "cell": "process-login" }, "target": { "cell": "process-auth" } },
-          { "id": "flow-3",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "3) Query user (hash/salt)" },            "source": { "cell": "process-auth" },  "target": { "cell": "store-db" } },
-          { "id": "flow-4",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "4) Result (match / no match)" },         "source": { "cell": "store-db" },      "target": { "cell": "process-auth" } },
-          { "id": "flow-5",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "5) Auth decision" },                     "source": { "cell": "process-auth" },  "target": { "cell": "process-app" } },
-          { "id": "flow-6",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "6) Read MotD" },                         "source": { "cell": "process-app" },   "target": { "cell": "store-db" } },
-          { "id": "flow-7",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "7) MotD data" },                         "source": { "cell": "store-db" },      "target": { "cell": "process-app" } },
-          { "id": "flow-8",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "8) MotD response to Browser" },          "source": { "cell": "process-app" },   "target": { "cell": "actor-user" } },
-          { "id": "flow-9",  "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "9) Comment POST" },                      "source": { "cell": "actor-user" },    "target": { "cell": "process-app" } },
-          { "id": "flow-10", "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "10) Insert comment" },                   "source": { "cell": "process-app" },   "target": { "cell": "store-db" } },
-          { "id": "flow-11", "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "11) Ack / Comment ID" },                 "source": { "cell": "store-db" },      "target": { "cell": "process-app" } },
-          { "id": "flow-12", "shape": "flow", "zIndex": 3, "data": { "type": "tm.Flow", "name": "12) Comment ack to Browser" },           "source": { "cell": "process-app" },   "target": { "cell": "actor-user" } }
+          { "id": "flow-1",  "type": "tm.Flow", "source": "actor-user",    "target": "process-login", "attrs": { "text": { "text": "1) Login POST" } } },
+          { "id": "flow-2",  "type": "tm.Flow", "source": "process-login", "target": "process-auth",  "attrs": { "text": { "text": "2) Credential check" } } },
+          { "id": "flow-3",  "type": "tm.Flow", "source": "process-auth",  "target": "store-db",      "attrs": { "text": { "text": "3) Query user" } } },
+          { "id": "flow-4",  "type": "tm.Flow", "source": "store-db",      "target": "process-auth",  "attrs": { "text": { "text": "4) Result" } } },
+          { "id": "flow-5",  "type": "tm.Flow", "source": "process-auth",  "target": "process-app",   "attrs": { "text": { "text": "5) Auth decision" } } },
+
+          { "id": "flow-6",  "type": "tm.Flow", "source": "process-app",   "target": "store-db",      "attrs": { "text": { "text": "6) Read MotD" } } },
+          { "id": "flow-7",  "type": "tm.Flow", "source": "store-db",      "target": "process-app",   "attrs": { "text": { "text": "7) MotD data" } } },
+          { "id": "flow-8",  "type": "tm.Flow", "source": "process-app",   "target": "actor-user",    "attrs": { "text": { "text": "8) MotD response" } } },
+
+          { "id": "flow-9",  "type": "tm.Flow", "source": "actor-user",    "target": "process-app",   "attrs": { "text": { "text": "9) Comment POST" } } },
+          { "id": "flow-10", "type": "tm.Flow", "source": "process-app",   "target": "store-db",      "attrs": { "text": { "text": "10) Insert comment" } } },
+          { "id": "flow-11", "type": "tm.Flow", "source": "store-db",      "target": "process-app",   "attrs": { "text": { "text": "11) Ack / ID" } } },
+          { "id": "flow-12", "type": "tm.Flow", "source": "process-app",   "target": "actor-user",    "attrs": { "text": { "text": "12) Comment ack" } } }
         ]
       }
-    ],
-    "diagramTop": 2,
-    "reviewer": "Todd Wolfe",
-    "threatTop": 0
+    ]
   }
 }
