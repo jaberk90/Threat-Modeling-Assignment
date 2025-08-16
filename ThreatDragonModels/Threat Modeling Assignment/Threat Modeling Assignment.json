@@ -3,7 +3,7 @@
   "summary": {
     "title": "Threat Modeling Assignment",
     "owner": "Jaber Kaal",
-    "description": "This system is a simple web application with a login page, open-source authentication component, and a database storing users, message-of-the-day, and comments. The diagram models user, app, auth, and DB flows.",
+    "description": "High level DFD showing Browser, Web App, Auth Component, and Database with login and comment flows",
     "id": 0
   },
   "detail": {
@@ -13,110 +13,116 @@
         "id": 0,
         "title": "Initial Threat Model Diagram",
         "diagramType": "DFD",
-        "placeholder": "Web app login + MotD data flow",
         "thumbnail": "./public/content/images/thumbnail.dfd.jpg",
         "version": "2.5.0-RC1",
-        "description": "This diagram shows data flows: Browser → Web App → Auth Component → Database, including login, MotD retrieval, and comments.",
         "cells": [
           {
             "id": "browser",
+            "z": 1,
             "position": { "x": 60, "y": 180 },
             "size": { "width": 100, "height": 50 },
             "shape": "tm.Actor",
-            "data": {
-              "name": "User Web Browser",
-              "type": "tm.Actor",
-              "hasOpenThreats": true
-            }
+            "attrs": { "text": { "text": "User Browser" } },
+            "data": { "name": "User Browser", "type": "tm.Actor", "hasOpenThreats": true }
           },
           {
             "id": "webapp",
+            "z": 2,
             "position": { "x": 260, "y": 120 },
             "size": { "width": 140, "height": 60 },
             "shape": "tm.Process",
-            "data": {
-              "name": "Web Application",
-              "type": "tm.Process",
-              "hasOpenThreats": true
-            }
+            "attrs": { "text": { "text": "Web Application" } },
+            "data": { "name": "Web Application", "type": "tm.Process", "hasOpenThreats": true }
           },
           {
             "id": "auth",
+            "z": 3,
             "position": { "x": 480, "y": 120 },
             "size": { "width": 160, "height": 60 },
             "shape": "tm.Process",
-            "data": {
-              "name": "Open-Source Auth Component",
-              "type": "tm.Process",
-              "hasOpenThreats": true
-            }
+            "attrs": { "text": { "text": "Auth Component" } },
+            "data": { "name": "Auth Component", "type": "tm.Process", "hasOpenThreats": true }
           },
           {
             "id": "db",
+            "z": 4,
             "position": { "x": 720, "y": 180 },
             "size": { "width": 150, "height": 70 },
             "shape": "tm.Store",
-            "data": {
-              "name": "Database",
-              "type": "tm.Store",
-              "hasOpenThreats": true
-            }
+            "attrs": { "text": { "text": "Database" } },
+            "data": { "name": "Database", "type": "tm.Store", "hasOpenThreats": true }
           },
           {
             "id": "flow1",
+            "z": 5,
             "shape": "tm.Flow",
             "source": { "id": "browser" },
             "target": { "id": "webapp" },
-            "data": { "name": "Login POST (username, password)" }
+            "attrs": { "text": { "text": "Login Request" } },
+            "data": { "name": "Login Request" }
           },
           {
             "id": "flow2",
+            "z": 6,
             "shape": "tm.Flow",
             "source": { "id": "webapp" },
             "target": { "id": "auth" },
-            "data": { "name": "Send credentials for validation" }
+            "attrs": { "text": { "text": "Send Credentials" } },
+            "data": { "name": "Send Credentials" }
           },
           {
             "id": "flow3",
+            "z": 7,
             "shape": "tm.Flow",
             "source": { "id": "auth" },
             "target": { "id": "db" },
-            "data": { "name": "Query user in DB" }
+            "attrs": { "text": { "text": "Query DB" } },
+            "data": { "name": "Query DB" }
           },
           {
             "id": "flow4",
+            "z": 8,
             "shape": "tm.Flow",
             "source": { "id": "db" },
             "target": { "id": "auth" },
-            "data": { "name": "Auth result" }
+            "attrs": { "text": { "text": "Auth Result" } },
+            "data": { "name": "Auth Result" }
           },
           {
             "id": "flow5",
+            "z": 9,
             "shape": "tm.Flow",
             "source": { "id": "auth" },
             "target": { "id": "webapp" },
-            "data": { "name": "Auth decision" }
+            "attrs": { "text": { "text": "Decision" } },
+            "data": { "name": "Decision" }
           },
           {
             "id": "flow6",
+            "z": 10,
             "shape": "tm.Flow",
             "source": { "id": "webapp" },
             "target": { "id": "db" },
-            "data": { "name": "Read / Insert MotD + Comments" }
+            "attrs": { "text": { "text": "Read/Insert MotD & Comments" } },
+            "data": { "name": "Read/Insert MotD & Comments" }
           },
           {
             "id": "flow7",
+            "z": 11,
             "shape": "tm.Flow",
             "source": { "id": "db" },
             "target": { "id": "webapp" },
-            "data": { "name": "Return MotD / Comment ACK" }
+            "attrs": { "text": { "text": "Return Data" } },
+            "data": { "name": "Return Data" }
           },
           {
             "id": "flow8",
+            "z": 12,
             "shape": "tm.Flow",
             "source": { "id": "webapp" },
             "target": { "id": "browser" },
-            "data": { "name": "Render MotD + Comment Response" }
+            "attrs": { "text": { "text": "Render Response" } },
+            "data": { "name": "Render Response" }
           }
         ]
       }
