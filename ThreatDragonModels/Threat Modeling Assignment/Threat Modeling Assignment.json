@@ -3,170 +3,126 @@
   "summary": {
     "title": "Threat Modeling Assignment",
     "owner": "Jaber Kaal",
-    "description": "This system is a simple web application that provides a login page for users. It uses an open source authentication component to validate credentials against a database. If valid, the user is shown a message-of-the-day retrieved from the database, and they may submit comments that are also stored in the database. The model highlights the data flows between the client browser, the application, the authentication component, and the database, along with potential threats using the STRIDE framework.",
+    "description": "This system is a simple web application with a login page, open-source authentication component, and a database storing users, message-of-the-day, and comments. The diagram models user, app, auth, and DB flows.",
     "id": 0
   },
   "detail": {
     "contributors": [],
-    "reviewer": "Todd Wolfe",
-    "diagramTop": 1,
-    "threatTop": 5,
     "diagrams": [
       {
         "id": 0,
         "title": "Initial Threat Model Diagram",
         "diagramType": "DFD",
-        "placeholder": "Data-flow diagram for login, open-source auth, message-of-the-day, and comments.",
-        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "placeholder": "Web app login + MotD data flow",
+        "thumbnail": "./public/content/images/thumbnail.dfd.jpg",
         "version": "2.5.0-RC1",
-        "description": "Actor: User Browser; Processes: Login Page, Web Application, Open Source Auth Component; Data Store: Database. Trust boundaries separate Internet, Application/Backend, and Database. Flows 1–12 cover login, credential check, MotD retrieval/display, and comment submission/ack.",
+        "description": "This diagram shows data flows: Browser → Web App → Auth Component → Database, including login, MotD retrieval, and comments.",
         "cells": [
           {
-            "id": "boundary-internet",
-            "type": "tm.Boundary",
-            "position": { "x": 40, "y": 20 },
-            "size": { "width": 200, "height": 130 },
-            "attrs": { "text": { "text": "Internet Boundary" } },
-            "properties": { "isTrustBoundary": true }
+            "id": "browser",
+            "position": { "x": 60, "y": 180 },
+            "size": { "width": 100, "height": 50 },
+            "shape": "tm.Actor",
+            "data": {
+              "name": "User Web Browser",
+              "type": "tm.Actor",
+              "hasOpenThreats": true
+            }
           },
           {
-            "id": "boundary-app",
-            "type": "tm.Boundary",
-            "position": { "x": 260, "y": 50 },
-            "size": { "width": 470, "height": 210 },
-            "attrs": { "text": { "text": "Application / Backend" } },
-            "properties": { "isTrustBoundary": true }
+            "id": "webapp",
+            "position": { "x": 260, "y": 120 },
+            "size": { "width": 140, "height": 60 },
+            "shape": "tm.Process",
+            "data": {
+              "name": "Web Application",
+              "type": "tm.Process",
+              "hasOpenThreats": true
+            }
           },
           {
-            "id": "boundary-db",
-            "type": "tm.Boundary",
-            "position": { "x": 770, "y": 120 },
-            "size": { "width": 210, "height": 150 },
-            "attrs": { "text": { "text": "Database Boundary" } },
-            "properties": { "isTrustBoundary": true }
-          },
-
-          {
-            "id": "actor-user",
-            "type": "tm.Actor",
-            "position": { "x": 80, "y": 50 },
+            "id": "auth",
+            "position": { "x": 480, "y": 120 },
             "size": { "width": 160, "height": 60 },
-            "attrs": { "text": { "text": "User Browser" } },
-            "properties": { "isPublicNetwork": true }
-          },
-
-          {
-            "id": "process-login",
-            "type": "tm.Process",
-            "position": { "x": 300, "y": 70 },
-            "size": { "width": 180, "height": 70 },
-            "attrs": { "text": { "text": "Login Page" } },
-            "properties": { "isAuthenticated": false, "isEncrypted": true, "handlesCredentials": true }
+            "shape": "tm.Process",
+            "data": {
+              "name": "Open-Source Auth Component",
+              "type": "tm.Process",
+              "hasOpenThreats": true
+            }
           },
           {
-            "id": "process-app",
-            "type": "tm.Process",
-            "position": { "x": 300, "y": 160 },
-            "size": { "width": 200, "height": 80 },
-            "attrs": { "text": { "text": "Web Application" } },
-            "properties": { "isAuthenticated": true, "isEncrypted": true }
+            "id": "db",
+            "position": { "x": 720, "y": 180 },
+            "size": { "width": 150, "height": 70 },
+            "shape": "tm.Store",
+            "data": {
+              "name": "Database",
+              "type": "tm.Store",
+              "hasOpenThreats": true
+            }
           },
           {
-            "id": "process-auth",
-            "type": "tm.Process",
-            "position": { "x": 520, "y": 120 },
-            "size": { "width": 240, "height": 80 },
-            "attrs": { "text": { "text": "Open Source Auth Component" } },
-            "properties": { "isAuthenticated": true, "isEncrypted": true, "handlesCredentials": true }
+            "id": "flow1",
+            "shape": "tm.Flow",
+            "source": { "id": "browser" },
+            "target": { "id": "webapp" },
+            "data": { "name": "Login POST (username, password)" }
           },
-
           {
-            "id": "store-db",
-            "type": "tm.Store",
-            "position": { "x": 800, "y": 150 },
-            "size": { "width": 180, "height": 90 },
-            "attrs": { "text": { "text": "Database (Users, MotD, Comments)" } },
-            "properties": { "isEncrypted": true, "storesSensitiveData": true }
+            "id": "flow2",
+            "shape": "tm.Flow",
+            "source": { "id": "webapp" },
+            "target": { "id": "auth" },
+            "data": { "name": "Send credentials for validation" }
           },
-
-          { "id": "flow-1",  "type": "tm.Flow", "source": "actor-user",    "target": "process-login", "attrs": { "text": { "text": "1) Login POST (username, password)" } }, "properties": { "isEncrypted": true, "isPublicNetwork": true, "isAuthenticated": false } },
-          { "id": "flow-2",  "type": "tm.Flow", "source": "process-login", "target": "process-auth",  "attrs": { "text": { "text": "2) Credential check" } },               "properties": { "isEncrypted": true, "isAuthenticated": false } },
-          { "id": "flow-3",  "type": "tm.Flow", "source": "process-auth",  "target": "store-db",      "attrs": { "text": { "text": "3) Query user (hash/salt)" } },         "properties": { "isEncrypted": true, "isAuthenticated": true } },
-          { "id": "flow-4",  "type": "tm.Flow", "source": "store-db",      "target": "process-auth",  "attrs": { "text": { "text": "4) Result" } },                        "properties": { "isEncrypted": true, "isAuthenticated": true } },
-          { "id": "flow-5",  "type": "tm.Flow", "source": "process-auth",  "target": "process-app",   "attrs": { "text": { "text": "5) Auth decision" } },                 "properties": { "isEncrypted": true, "isAuthenticated": true } },
-
-          { "id": "flow-6",  "type": "tm.Flow", "source": "process-app",   "target": "store-db",      "attrs": { "text": { "text": "6) Read MotD" } },                     "properties": { "isEncrypted": true, "isAuthenticated": true } },
-          { "id": "flow-7",  "type": "tm.Flow", "source": "store-db",      "target": "process-app",   "attrs": { "text": { "text": "7) MotD data" } },                     "properties": { "isEncrypted": true, "isAuthenticated": true } },
-          { "id": "flow-8",  "type": "tm.Flow", "source": "process-app",   "target": "actor-user",    "attrs": { "text": { "text": "8) MotD response" } },                 "properties": { "isEncrypted": true, "isAuthenticated": true } },
-
-          { "id": "flow-9",  "type": "tm.Flow", "source": "actor-user",    "target": "process-app",   "attrs": { "text": { "text": "9) Comment POST" } },                  "properties": { "isEncrypted": true, "isPublicNetwork": true, "isAuthenticated": true } },
-          { "id": "flow-10", "type": "tm.Flow", "source": "process-app",   "target": "store-db",      "attrs": { "text": { "text": "10) Insert comment" } },               "properties": { "isEncrypted": true, "isAuthenticated": true, "validatesInput": true } },
-          { "id": "flow-11", "type": "tm.Flow", "source": "store-db",      "target": "process-app",   "attrs": { "text": { "text": "11) Ack / Comment ID" } },             "properties": { "isEncrypted": true, "isAuthenticated": true } },
-          { "id": "flow-12", "type": "tm.Flow", "source": "process-app",   "target": "actor-user",    "attrs": { "text": { "text": "12) Comment ack" } },                  "properties": { "isEncrypted": true, "isAuthenticated": true } }
+          {
+            "id": "flow3",
+            "shape": "tm.Flow",
+            "source": { "id": "auth" },
+            "target": { "id": "db" },
+            "data": { "name": "Query user in DB" }
+          },
+          {
+            "id": "flow4",
+            "shape": "tm.Flow",
+            "source": { "id": "db" },
+            "target": { "id": "auth" },
+            "data": { "name": "Auth result" }
+          },
+          {
+            "id": "flow5",
+            "shape": "tm.Flow",
+            "source": { "id": "auth" },
+            "target": { "id": "webapp" },
+            "data": { "name": "Auth decision" }
+          },
+          {
+            "id": "flow6",
+            "shape": "tm.Flow",
+            "source": { "id": "webapp" },
+            "target": { "id": "db" },
+            "data": { "name": "Read / Insert MotD + Comments" }
+          },
+          {
+            "id": "flow7",
+            "shape": "tm.Flow",
+            "source": { "id": "db" },
+            "target": { "id": "webapp" },
+            "data": { "name": "Return MotD / Comment ACK" }
+          },
+          {
+            "id": "flow8",
+            "shape": "tm.Flow",
+            "source": { "id": "webapp" },
+            "target": { "id": "browser" },
+            "data": { "name": "Render MotD + Comment Response" }
+          }
         ]
       }
     ],
-    "threats": [
-      {
-        "id": 1,
-        "title": "Spoofing via vulnerable auth component",
-        "type": "Spoofing",
-        "status": "Open",
-        "severity": "High",
-        "score": "",
-        "description": "If the open-source auth component has a flaw (e.g., auth bypass), an attacker could impersonate a user.",
-        "mitigation": "Pin versions; enable SSO/OIDC if possible; use defense-in-depth (WAF/rate limits).",
-        "modelType": "STRIDE",
-        "elementId": "process-auth"
-      },
-      {
-        "id": 2,
-        "title": "Tampering: XSS via comment submission",
-        "type": "Tampering",
-        "status": "Open",
-        "severity": "High",
-        "score": "",
-        "description": "Unvalidated user input in comments could lead to stored XSS.",
-        "mitigation": "Server-side validation/encoding; CSP; output encoding; security headers.",
-        "modelType": "STRIDE",
-        "elementId": "flow-10"
-      },
-      {
-        "id": 3,
-        "title": "Repudiation: missing audit of comment changes",
-        "type": "Repudiation",
-        "status": "Open",
-        "severity": "Medium",
-        "score": "",
-        "description": "Users could deny posting/modifying comments if no audit log exists.",
-        "mitigation": "Add tamper-evident audit trail; include user/session IDs and timestamps.",
-        "modelType": "STRIDE",
-        "elementId": "process-app"
-      },
-      {
-        "id": 4,
-        "title": "Information Disclosure: weak transport on login",
-        "type": "Information Disclosure",
-        "status": "Open",
-        "severity": "Critical",
-        "score": "",
-        "description": "If TLS is not enforced, credentials could be intercepted over the network.",
-        "mitigation": "HSTS; TLS everywhere; secure cookies; modern cipher suites.",
-        "modelType": "STRIDE",
-        "elementId": "flow-1"
-      },
-      {
-        "id": 5,
-        "title": "Elevation of Privilege: improper authorization on MotD read",
-        "type": "Elevation of Privilege",
-        "status": "Open",
-        "severity": "Medium",
-        "score": "",
-        "description": "Lack of role checks may allow unauthorized users to read/write MotD.",
-        "mitigation": "Enforce RBAC/ABAC; server-side checks; least privilege.",
-        "modelType": "STRIDE",
-        "elementId": "process-app"
-      }
-    ]
+    "diagramTop": 2,
+    "reviewer": "test",
+    "threatTop": 0
   }
 }
