@@ -18,652 +18,149 @@
         "version": "2.5.0-RC1",
         "cells": [
           {
-            "position": {
-              "x": 116.24999999999986,
-              "y": 80
-            },
-            "size": {
-              "width": 260,
-              "height": 210
-            },
-            "attrs": {
-              "label": {
-                "text": "Trust Boundary: internet"
-              }
-            },
+            "position": { "x": 116.25, "y": 80 },
+            "size": { "width": 260, "height": 210 },
+            "attrs": { "label": { "text": "Trust Boundary: internet" } },
             "visible": true,
             "shape": "trust-boundary-box",
             "zIndex": -1,
             "id": "8f1ca0d7-8e04-4df2-b215-500657f38c02",
-            "data": {
-              "type": "tm.BoundaryBox",
-              "name": "Trust Boundary: internet",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            }
+            "data": { "type": "tm.BoundaryBox", "name": "Trust Boundary: internet", "isTrustBoundary": true }
           },
           {
-            "position": {
-              "x": 463.99999999999966,
-              "y": 155
-            },
-            "size": {
-              "width": 370,
-              "height": 270
-            },
-            "attrs": {
-              "label": {
-                "text": "Trust Boundary: Application/Backend"
-              }
-            },
+            "position": { "x": 464, "y": 155 },
+            "size": { "width": 370, "height": 270 },
+            "attrs": { "label": { "text": "Trust Boundary: Application/Backend" } },
             "visible": true,
             "shape": "trust-boundary-box",
             "zIndex": -1,
             "id": "092042b5-d933-4e24-90d8-ac609061eea2",
-            "data": {
-              "type": "tm.BoundaryBox",
-              "name": "Trust Boundary: Application/Backend",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            }
+            "data": { "type": "tm.BoundaryBox", "name": "Trust Boundary: Application/Backend", "isTrustBoundary": true }
           },
           {
-            "position": {
-              "x": 388.99999999999966,
-              "y": 535
-            },
-            "size": {
-              "width": 200,
-              "height": 110
-            },
-            "attrs": {
-              "label": {
-                "text": "Trust Boundary: Databse"
-              }
-            },
+            "position": { "x": 389, "y": 535 },
+            "size": { "width": 200, "height": 110 },
+            "attrs": { "label": { "text": "Trust Boundary: Database" } },
             "visible": true,
             "shape": "trust-boundary-box",
             "zIndex": -1,
             "id": "d762dfb7-3e2d-49bb-99dd-36f4e6e16143",
-            "data": {
-              "type": "tm.BoundaryBox",
-              "name": "Trust Boundary: Databse",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            }
+            "data": { "type": "tm.BoundaryBox", "name": "Trust Boundary: Database", "isTrustBoundary": true }
           },
           {
-            "position": {
-              "x": 179.99999999999986,
-              "y": 155
-            },
-            "size": {
-              "width": 112.5,
-              "height": 60
-            },
-            "attrs": {
-              "text": {
-                "text": "User Browser"
-              },
-              "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              }
-            },
+            "position": { "x": 180, "y": 155 },
+            "size": { "width": 112.5, "height": 60 },
+            "attrs": { "text": { "text": "User Browser" } },
             "visible": true,
             "shape": "actor",
             "zIndex": 1,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "b36ef166-af2b-4f7d-8bc1-027333f2b490"
-                },
-                {
-                  "group": "right",
-                  "id": "6785875f-7933-4547-bccf-f5fdb15286a4"
-                },
-                {
-                  "group": "bottom",
-                  "id": "d37895ce-6abc-4c5d-8e7d-aa3bc3f66308"
-                },
-                {
-                  "group": "left",
-                  "id": "4f91bffd-9bce-4b57-8808-fca74b4e1e55"
-                }
-              ]
-            },
             "id": "f1846eeb-37f2-43f6-ac03-48501a1667cd",
             "data": {
               "type": "tm.Actor",
               "name": "User Browser",
-              "description": "",
-              "isTrustBoundary": false,
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "T1",
+                  "title": "Spoofing User Identity",
+                  "description": "An attacker may spoof login credentials to impersonate a user.",
+                  "status": "Open",
+                  "severity": "High",
+                  "stride": "Spoofing"
+                }
+              ]
             }
           },
           {
-            "position": {
-              "x": 538.9999999999997,
-              "y": 215
-            },
-            "size": {
-              "width": 220,
-              "height": 70
-            },
-            "attrs": {
-              "text": {
-                "text": "Web Application"
-              },
-              "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              }
-            },
+            "position": { "x": 539, "y": 215 },
+            "size": { "width": 220, "height": 70 },
+            "attrs": { "text": { "text": "Web Application" } },
             "visible": true,
             "shape": "actor",
             "zIndex": 2,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "b36ef166-af2b-4f7d-8bc1-027333f2b490"
-                },
-                {
-                  "group": "right",
-                  "id": "6785875f-7933-4547-bccf-f5fdb15286a4"
-                },
-                {
-                  "group": "bottom",
-                  "id": "d37895ce-6abc-4c5d-8e7d-aa3bc3f66308"
-                },
-                {
-                  "group": "left",
-                  "id": "4f91bffd-9bce-4b57-8808-fca74b4e1e55"
-                }
-              ]
-            },
             "id": "e7fa9648-0b0c-449c-a222-e84f32b585cf",
             "data": {
               "type": "tm.Actor",
               "name": "Web Application",
-              "description": "",
-              "isTrustBoundary": false,
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "T2",
+                  "title": "Tampering via SQL Injection",
+                  "description": "Malicious input may modify database queries and alter data.",
+                  "status": "Open",
+                  "severity": "High",
+                  "stride": "Tampering"
+                }
+              ]
             }
           },
           {
-            "position": {
-              "x": 538.9999999999997,
-              "y": 320
-            },
-            "size": {
-              "width": 230,
-              "height": 70
-            },
-            "attrs": {
-              "text": {
-                "text": "Open-source Auth Component"
-              },
-              "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              }
-            },
+            "position": { "x": 539, "y": 320 },
+            "size": { "width": 230, "height": 70 },
+            "attrs": { "text": { "text": "Open-source Auth Component" } },
             "visible": true,
             "shape": "actor",
             "zIndex": 3,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "b36ef166-af2b-4f7d-8bc1-027333f2b490"
-                },
-                {
-                  "group": "right",
-                  "id": "6785875f-7933-4547-bccf-f5fdb15286a4"
-                },
-                {
-                  "group": "bottom",
-                  "id": "d37895ce-6abc-4c5d-8e7d-aa3bc3f66308"
-                },
-                {
-                  "group": "left",
-                  "id": "4f91bffd-9bce-4b57-8808-fca74b4e1e55"
-                }
-              ]
-            },
             "id": "69dcc064-a11a-4962-8aba-51563c443e75",
             "data": {
               "type": "tm.Actor",
               "name": "Open-source Auth Component",
-              "description": "",
-              "isTrustBoundary": false,
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "T3",
+                  "title": "Vulnerable Authentication Logic",
+                  "description": "Weaknesses in the open-source auth module may allow bypassing login.",
+                  "status": "Open",
+                  "severity": "High",
+                  "stride": "Elevation of Privilege"
+                }
+              ]
             }
           },
           {
-            "position": {
-              "x": 418.99999999999966,
-              "y": 560
-            },
-            "size": {
-              "width": 120,
-              "height": 60
-            },
-            "attrs": {
-              "text": {
-                "text": "Database"
-              },
-              "topLine": {
-                "strokeWidth": 1.5,
-                "strokeDasharray": "4 3"
-              },
-              "bottomLine": {
-                "strokeWidth": 1.5,
-                "strokeDasharray": "4 3"
-              }
-            },
+            "position": { "x": 419, "y": 560 },
+            "size": { "width": 120, "height": 60 },
+            "attrs": { "text": { "text": "Database" } },
             "visible": true,
             "shape": "store",
             "zIndex": 4,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "6c4846bc-7578-4d62-a53b-41cc88f98431"
-                },
-                {
-                  "group": "right",
-                  "id": "2864f7ce-8618-4f4a-b988-5302ec780a8c"
-                },
-                {
-                  "group": "bottom",
-                  "id": "53a0bdfb-fd1e-4e45-95fa-92cbd1a77126"
-                },
-                {
-                  "group": "left",
-                  "id": "a5734993-3341-4834-83f3-6f4fcbfdf55c"
-                }
-              ]
-            },
             "id": "c8e10dbb-7a9a-4867-929f-45a6df4587d4",
             "data": {
               "type": "tm.Store",
               "name": "Database",
-              "description": "",
-              "outOfScope": true,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isALog": true,
-              "isEncrypted": true,
-              "isSigned": true,
               "storesCredentials": true,
-              "storesInventory": true,
-              "threats": []
+              "threats": [
+                {
+                  "id": "T4",
+                  "title": "Information Disclosure of Credentials",
+                  "description": "If the database is not encrypted, attackers may steal user passwords.",
+                  "status": "Open",
+                  "severity": "High",
+                  "stride": "Information Disclosure"
+                }
+              ]
             }
           },
           {
             "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
+            "id": "5f4cebfb-cbf3-465c-94bc-4f63d5fb297e",
             "data": {
               "type": "tm.Flow",
               "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
               "isBidirectional": true,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "T5",
+                  "title": "Denial of Service Attack",
+                  "description": "Attackers may overload the login or comment flow to disrupt service.",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "stride": "Denial of Service"
+                }
+              ]
             },
-            "labels": [
-              "Data Flow"
-            ],
-            "id": "5f4cebfb-cbf3-465c-94bc-4f63d5fb297e",
-            "source": {
-              "x": 619,
-              "y": 425
-            },
-            "target": {
-              "x": 590,
-              "y": 580
-            },
-            "vertices": [
-              {
-                "x": 660,
-                "y": 450
-              }
-            ]
-          },
-          {
-            "shape": "trust-boundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "login/cred check",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
-            "labels": [
-              "login/cred check"
-            ],
-            "id": "127555a4-3df5-4560-be44-e76b48626429",
-            "source": {
-              "x": 360,
-              "y": 80
-            },
-            "target": {
-              "x": 460,
-              "y": 180
-            },
-            "vertices": [
-              {
-                "x": 540,
-                "y": 60
-              },
-              {
-                "x": 490,
-                "y": 110
-              },
-              {
-                "x": 460,
-                "y": 130
-              },
-              {
-                "x": 430,
-                "y": 160
-              }
-            ]
+            "labels": ["Data Flow"],
+            "source": { "x": 619, "y": 425 },
+            "target": { "x": 590, "y": 580 }
           }
         ],
         "description": "This diagram shows the data flow for the sample web application including login, open source authentication, message-of-the-day retrieval, and comments."
@@ -671,6 +168,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Todd Wolfe",
-    "threatTop": 0
+    "threatTop": 5
   }
 }
