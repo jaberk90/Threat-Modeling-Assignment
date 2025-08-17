@@ -1,40 +1,54 @@
 {
   "version": "2.5.0-RC1",
-  "summary": { "title": "Sanity", "owner": "you", "description": "Minimal model to verify ThreatDragon loads", "id": 0 },
+  "summary": {
+    "title": "Threat Modeling Assignment",
+    "owner": "Jaber Kaal",
+    "description": "Simple web app with login, open-source auth, message-of-the-day, and comments.",
+    "id": 0
+  },
   "detail": {
     "contributors": [],
+    "reviewer": "Todd Wolfe",
     "diagramTop": 1,
-    "threatTop": 0,
+    "threatTop": 5,
     "diagrams": [
       {
         "id": 0,
-        "title": "Sanity DFD",
+        "title": "Initial Threat Model Diagram",
         "diagramType": "DFD",
         "version": "2.5.0-RC1",
         "cells": [
-          {
-            "id": "actor-1",
-            "type": "tm.Actor",
-            "position": { "x": 60, "y": 80 },
-            "size": { "width": 140, "height": 60 },
-            "attrs": { "text": { "text": "User" } }
-          },
-          {
-            "id": "process-1",
-            "type": "tm.Process",
-            "position": { "x": 260, "y": 80 },
-            "size": { "width": 160, "height": 70 },
-            "attrs": { "text": { "text": "App" } }
-          },
-          {
-            "id": "flow-1",
-            "type": "tm.Flow",
-            "source": "actor-1",
-            "target": "process-1",
-            "attrs": { "text": { "text": "Request" } }
-          }
+          { "id": "boundary-internet", "type": "tm.Boundary", "position": { "x": 30, "y": 40 }, "size": { "width": 220, "height": 150 }, "attrs": { "text": { "text": "Internet" } } },
+          { "id": "boundary-app",      "type": "tm.Boundary", "position": { "x": 280, "y": 40 }, "size": { "width": 470, "height": 220 }, "attrs": { "text": { "text": "Application / Backend" } } },
+          { "id": "boundary-db",       "type": "tm.Boundary", "position": { "x": 780, "y": 110 }, "size": { "width": 220, "height": 170 }, "attrs": { "text": { "text": "Database" } } },
+
+          { "id": "actor-browser", "type": "tm.Actor",   "position": { "x": 70,  "y": 80  }, "size": { "width": 160, "height": 60 }, "attrs": { "text": { "text": "User Web Browser" } } },
+          { "id": "process-login", "type": "tm.Process", "position": { "x": 310, "y": 70  }, "size": { "width": 180, "height": 70 }, "attrs": { "text": { "text": "Login Page" } } },
+          { "id": "process-app",   "type": "tm.Process", "position": { "x": 310, "y": 160 }, "size": { "width": 200, "height": 80 }, "attrs": { "text": { "text": "Web Application" } } },
+          { "id": "process-auth",  "type": "tm.Process", "position": { "x": 540, "y": 120 }, "size": { "width": 240, "height": 80 }, "attrs": { "text": { "text": "Open-Source Auth Component" } } },
+          { "id": "store-db",      "type": "tm.Store",   "position": { "x": 820, "y": 150 }, "size": { "width": 180, "height": 90 }, "attrs": { "text": { "text": "Database (Users, MotD, Comments)" } } },
+
+          { "id": "flow-1",  "type": "tm.Flow", "source": "actor-browser",  "target": "process-login", "attrs": { "text": { "text": "1) Login POST" } } },
+          { "id": "flow-2",  "type": "tm.Flow", "source": "process-login",  "target": "process-auth",  "attrs": { "text": { "text": "2) Credential check" } } },
+          { "id": "flow-3",  "type": "tm.Flow", "source": "process-auth",   "target": "store-db",      "attrs": { "text": { "text": "3) Query user" } } },
+          { "id": "flow-4",  "type": "tm.Flow", "source": "store-db",       "target": "process-auth",  "attrs": { "text": { "text": "4) Auth result" } } },
+          { "id": "flow-5",  "type": "tm.Flow", "source": "process-auth",   "target": "process-app",   "attrs": { "text": { "text": "5) Auth decision" } } },
+          { "id": "flow-6",  "type": "tm.Flow", "source": "process-app",    "target": "store-db",      "attrs": { "text": { "text": "6) Read MotD" } } },
+          { "id": "flow-7",  "type": "tm.Flow", "source": "store-db",       "target": "process-app",   "attrs": { "text": { "text": "7) MotD data" } } },
+          { "id": "flow-8",  "type": "tm.Flow", "source": "process-app",    "target": "actor-browser", "attrs": { "text": { "text": "8) MotD response" } } },
+          { "id": "flow-9",  "type": "tm.Flow", "source": "actor-browser",  "target": "process-app",   "attrs": { "text": { "text": "9) Comment POST" } } },
+          { "id": "flow-10", "type": "tm.Flow", "source": "process-app",    "target": "store-db",      "attrs": { "text": { "text": "10) Insert comment" } } },
+          { "id": "flow-11", "type": "tm.Flow", "source": "store-db",       "target": "process-app",   "attrs": { "text": { "text": "11) Ack / ID" } } },
+          { "id": "flow-12", "type": "tm.Flow", "source": "process-app",    "target": "actor-browser", "attrs": { "text": { "text": "12) Comment ack" } } }
         ]
       }
+    ],
+    "threats": [
+      { "id": 1, "title": "Spoofing via vulnerable auth", "type": "Spoofing", "status": "Open", "severity": "High", "description": "Auth component flaw could allow user impersonation.", "mitigation": "Pin versions; MFA; rate limits.", "modelType": "STRIDE", "elementId": "process-auth" },
+      { "id": 2, "title": "Tampering: stored XSS in comments", "type": "Tampering", "status": "Open", "severity": "High", "description": "Unvalidated comment input could be stored XSS.", "mitigation": "Validate/encode; CSP; security headers.", "modelType": "STRIDE", "elementId": "flow-10" },
+      { "id": 3, "title": "Repudiation: missing audit logs", "type": "Repudiation", "status": "Open", "severity": "Medium", "description": "Users can deny posting/changes without audit trail.", "mitigation": "Add tamper-evident logging.", "modelType": "STRIDE", "elementId": "process-app" },
+      { "id": 4, "title": "Info Disclosure: weak transport on login", "type": "Information Disclosure", "status": "Open", "severity": "Critical", "description": "Credentials exposed if TLS not enforced.", "mitigation": "HSTS/TLS; secure cookies.", "modelType": "STRIDE", "elementId": "flow-1" },
+      { "id": 5, "title": "EoP: missing authorization on MotD ops", "type": "Elevation of Privilege", "status": "Open", "severity": "Medium", "description": "Lack of RBAC allows unauthorized actions.", "mitigation": "RBAC/ABAC; least privilege.", "modelType": "STRIDE", "elementId": "process-app" }
     ]
   }
 }
