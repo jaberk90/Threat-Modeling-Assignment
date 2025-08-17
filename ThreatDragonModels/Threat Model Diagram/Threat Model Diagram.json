@@ -1,0 +1,27 @@
+{
+  "version": "2.5.0-RC1",
+  "summary": {
+    "title": "Threat Model Diagram",
+    "owner": "Jaber Kaal",
+    "description": "Actor: User Browser; Processes: Login Page, Web Application, Open Source Auth Component; Data Store: Database. Trust boundaries separate the Internet, Application/Backend, and Database. Flows cover login, credential check, MotD retrieval/display, and comment submission/ack.",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "initial diagram",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.5.0-RC1",
+        "cells": [],
+        "description": "This diagram shows the data flow for the sample web application including login, open source authentication, message-of-the-day retrieval, and comments."
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "Todd Wolfe",
+    "threatTop": 0
+  }
+}
