@@ -33,8 +33,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "8f1ca0d7-8e04-4df2-b215-500657f38c02",
             "zIndex": -1,
+            "id": "8f1ca0d7-8e04-4df2-b215-500657f38c02",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Trust Boundary: internet",
@@ -59,8 +59,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "092042b5-d933-4e24-90d8-ac609061eea2",
             "zIndex": -1,
+            "id": "092042b5-d933-4e24-90d8-ac609061eea2",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Trust Boundary: Application/Backend",
@@ -85,8 +85,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "d762dfb7-3e2d-49bb-99dd-36f4e6e16143",
             "zIndex": -1,
+            "id": "d762dfb7-3e2d-49bb-99dd-36f4e6e16143",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Trust Boundary: Databse",
@@ -116,6 +116,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -199,7 +200,6 @@
               ]
             },
             "id": "f1846eeb-37f2-43f6-ac03-48501a1667cd",
-            "zIndex": 1,
             "data": {
               "type": "tm.Actor",
               "name": "User Browser",
@@ -233,6 +233,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -316,7 +317,6 @@
               ]
             },
             "id": "e7fa9648-0b0c-449c-a222-e84f32b585cf",
-            "zIndex": 2,
             "data": {
               "type": "tm.Actor",
               "name": "Web Application",
@@ -350,6 +350,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -433,7 +434,6 @@
               ]
             },
             "id": "69dcc064-a11a-4962-8aba-51563c443e75",
-            "zIndex": 3,
             "data": {
               "type": "tm.Actor",
               "name": "Open-source Auth Component",
@@ -470,6 +470,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 4,
             "ports": {
               "groups": {
                 "top": {
@@ -553,7 +554,6 @@
               ]
             },
             "id": "c8e10dbb-7a9a-4867-929f-45a6df4587d4",
-            "zIndex": 4,
             "data": {
               "type": "tm.Store",
               "name": "Database",
